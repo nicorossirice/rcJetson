@@ -16,7 +16,7 @@ if __name__ == "__main__":
     client = Client()
     client.connect("192.168.137.1", 60006)
 
-    old_mask = signal.pthread_sigmask({signal.SIGINT}, signal.SIG_BLOCK)
+    old_mask = signal.pthread_sigmask(signal.SIG_BLOCK, {signal.SIGINT})
 
     while True:
         messages = client.read_messages()
@@ -30,4 +30,4 @@ if __name__ == "__main__":
             client.disconnect()
             break
 
-        signal.pthread_sigmask(old_mask, signal.SET_MASK)
+        signal.pthread_sigmask(signal.SET_MASK, old_mask)
