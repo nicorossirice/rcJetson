@@ -5,14 +5,8 @@ import cv2
 from EthernetAPI.client import Client
 from EthernetAPI.message_types import RC_DATA
 
-def cleanup(signum, stackframe):
-    print("\nCleaning up...\n")
-    #client.disconnect()
-    exit()
 
 if __name__ == "__main__":
-    signal.signal(signal.SIGINT, cleanup)
-
     client = Client()
     client.connect("192.168.137.1", 60006)
 
@@ -30,4 +24,4 @@ if __name__ == "__main__":
             client.disconnect()
             break
 
-        signal.pthread_sigmask(signal.SIG_SETMASK, old_mask)
+    signal.pthread_sigmask(signal.SIG_SETMASK, old_mask)
