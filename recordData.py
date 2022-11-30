@@ -30,4 +30,4 @@ if __name__ == "__main__":
             client.disconnect()
             break
 
-        signal.pthread_sigmask(signal.SET_MASK, old_mask)
+        signal.pthread_sigmask(signal.SIG_SETMASK, old_mask)
