@@ -23,7 +23,7 @@ if __name__ == "__main__":
         if messages:
             for mtype, message in messages:
                 if mtype == RC_DATA:
-                    throttle, steering = message.splot("|")
+                    throttle, steering = message.split("|")
                     print(f"{throttle}|{steering}")
 
         if signal.SIGINT in signal.sigpending():
